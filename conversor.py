@@ -1,8 +1,9 @@
 import re
 import xml.etree.ElementTree as et
+import math
 
 
-# takes in a TCX file and outputs a CSV file
+# Convert the input .tcx file and return a .csv file.
 def tcx2csv(input, output):
     tree = et.parse(input)
     root = tree.getroot()
@@ -74,3 +75,14 @@ def tcx2csv(input, output):
                 fout.write(','.join((time, latitude, longitude, altitude, bpm, spd, rcd)) + '\n')
 
     fout.close()
+
+
+# Convert two latitude and longitude points into distance measure.
+def latlon2dist(lat1, lon1, lat2, lon2):
+    R = 6371  # Earth radius [km]
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    d = R * c / 1000  # Distance [m]
+    return d
