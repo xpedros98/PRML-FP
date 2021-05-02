@@ -1,24 +1,55 @@
 from inspector import loadData, summarize
 import os
 
+# Convert all .tcx files of the "Data" folder of the project to .csv files in the "Outs" folder of the project.
 loadData(os.path.dirname(__file__) + "/Data", os.path.dirname(__file__) + "/Outs")
 
+# Merge all information of the .csv files of the "Outs" folder of the project into a single .csv dataset.
 counter = 0
 for file in os.listdir(os.path.dirname(__file__) + "/Outs"):
+    print("------------------------")
+    print(os.path.dirname(__file__) + "/Outs/" + file)
+
+    # Compress the information for each activity into statistical data.
     out_dict = summarize(os.path.dirname(__file__) + "/Outs/" + file)
+
+    # Initialize the dataset.
     ds = open(os.path.dirname(__file__) + "/dataset.csv", "w+")
-    if counter == 0:
+    line = ""
+    if counter == 0:  # For the first iteration.
+        # Save the headers.
         for field in out_dict.keys():
-            ds.write(field)
+            line = line + field + ","
 
-        ds.write("\n")
+        # Remove the last comma to avoid a confusion of an extra field.
+        line = line[0:-1]
+
+        # Add entry to the dataset.
+        ds.write(line + "\n")
+
+        # Save the information.
+        for field in out_dict.keys():
+            line = line + str(out_dict[field]) + ","
+
+        # Remove the last comma to avoid a confusion of an extra field.
+        line = line[0:-1]
+
+        # Add entry to the dataset.
+        ds.write(line + "\n")
     else:
+        # Save the information.
         for field in out_dict.keys():
-            ds.write(out_dict[field])
+            line = line + str(out_dict[field]) + ","
 
-        ds.write("\n")
+        # Remove the last comma to avoid a confusion of an extra field.
+        line = line[0:-1]
 
-    print("nice")
+        # Add entry to the dataset.
+        ds.write(line + "\n")
+
+    counter = counter + 1
+
+ds.close()
 
 
 
