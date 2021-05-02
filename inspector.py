@@ -64,7 +64,7 @@ def summarize(activity):
 
                     i = i + 1
             else:
-                print("ERROR summarize: " + str(len(dict)) + " fields are expected but only " + str(len(split_line)) + " was detected.")
+                print("ERROR summarize: " + str(len(dict)) + " fields are expected but only " + str(len(split_line)) + " was detected.\nContent: '" + line + "'\n")
 
         counter = counter + 1
 
@@ -75,7 +75,6 @@ def summarize(activity):
     # Initialize the summarizing dictionary to be returned.
     dict2 = {}
     for field in dict.keys():
-        print(field)
         # Check that the field is not empty.
         if len(dict[field]) > 0:
             # Compute some statistics properties.

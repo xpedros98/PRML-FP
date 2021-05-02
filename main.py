@@ -4,17 +4,16 @@ import os
 # Convert all .tcx files of the "Data" folder of the project to .csv files in the "Outs" folder of the project.
 loadData(os.path.dirname(__file__) + "/Data", os.path.dirname(__file__) + "/Outs")
 
+
+# Initialize the dataset file.
+ds = open(os.path.dirname(__file__) + "/dataset.csv", "w+")
+
 # Merge all information of the .csv files of the "Outs" folder of the project into a single .csv dataset.
 counter = 0
 for file in os.listdir(os.path.dirname(__file__) + "/Outs"):
-    print("------------------------")
-    print(os.path.dirname(__file__) + "/Outs/" + file)
-
     # Compress the information for each activity into statistical data.
     out_dict = summarize(os.path.dirname(__file__) + "/Outs/" + file)
 
-    # Initialize the dataset.
-    ds = open(os.path.dirname(__file__) + "/dataset.csv", "w+")
     line = ""
     if counter == 0:  # For the first iteration.
         # Save the headers.
@@ -26,6 +25,8 @@ for file in os.listdir(os.path.dirname(__file__) + "/Outs"):
 
         # Add entry to the dataset.
         ds.write(line + "\n")
+
+        line = ""
 
         # Save the information.
         for field in out_dict.keys():
