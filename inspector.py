@@ -9,7 +9,7 @@ def loadData(in_path, out_path):
     counter = 0
 
     # Save a timestamp fro the files name to identify them easily.
-    timestamp = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    timestamp = "" #datetime.now().strftime("%d-%m_%H:%M")
 
     # Scans the entire input directory to convert all the files.
     for root, dirs, files in os.walk(in_path):
@@ -21,8 +21,12 @@ def loadData(in_path, out_path):
             if curr_file.split(".")[-1] == "tcx":
                 counter = counter + 1
 
+                # Save the enough path parts to interpret which sport was recorded in each file.
+                split_path = curr_file.split("/")
+                indx = split_path.index("Data")
+
                 # Convert TCX data into CSV data.
-                tcx2csv(curr_file, out_path + "/" + timestamp + "_out_#" + str(counter) + ".csv")
+                tcx2csv(curr_file, out_path + "/" + "#" + str(counter) + "_" + timestamp + "_" + "_".join(split_path[indx:-1]) + ".csv")
 
 
 # Inspect a set of lines information and return it as single summarizing dictionary.
@@ -86,9 +90,26 @@ def summarize(activity):
             dict2[field + "_q2"] = quant[1]
             dict2[field + "_q3"] = quant[2]
 
+    # Add a label for each activity.
+    main_label = "ERROR"
+    act_folders = activity.split("/")[-1]
+    if -1 < act_folders.find("Run") or -1 < act_folders.find("Trail") or -1 < act_folders.find("Asfalt") or -1 < act_folders.find("run"):
+        main_label = "run"
+    elif -1 < act_folders.find("Cycling") or -1 < act_folders.find("Bici") or -1 < act_folders.find("Bycicle"):
+        main_label = "bike"
+    elif -1 < act_folders.find("Walking"):
+        main_label = "walk"
+    else:
+        print("No label detected for: " + act_folders)
+        print("Indicate the main label manually: ", end="")
+        main_label = input()
+
+    dict2["label"] = main_label
+
     # Add checksums at the end of each summarizing dictionary.
     dict2["fields_num"] = len(dict.keys())  # Number of assessed fields.
     dict2["props_num"] = 6  # Number of statistics properties considered.
+    dict2["#ref"] = act_folders.split("_")[0]
 
     return dict2
 
