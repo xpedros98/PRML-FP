@@ -65,6 +65,8 @@ def summarize(activity):
                         # Do not save the empty fields in the dictionary.
                         if curr_value != "NaN":
                             dict[field].append(float(curr_value))
+                        else:
+                            dict[field].append("NaN")
 
                     i = i + 1
             else:
@@ -81,14 +83,23 @@ def summarize(activity):
     for field in dict.keys():
         # Check that the field is not empty.
         if len(dict[field]) > 0:
-            # Compute some statistics properties.
-            dict2[field + "_max"] = max(dict[field])
-            dict2[field + "_min"] = min(dict[field])
-            dict2[field + "_mean"] = st.mean(dict[field])
-            quant = st.quantiles(dict[field], n=4)
-            dict2[field + "_q1"] = quant[0]
-            dict2[field + "_q2"] = quant[1]
-            dict2[field + "_q3"] = quant[2]
+            if dict[field][0] != "NaN":
+                # Compute some statistics properties.
+                dict2[field + "_max"] = max(dict[field])
+                dict2[field + "_min"] = min(dict[field])
+                dict2[field + "_mean"] = st.mean(dict[field])
+                quant = st.quantiles(dict[field], n=4)
+                dict2[field + "_q1"] = quant[0]
+                dict2[field + "_q2"] = quant[1]
+                dict2[field + "_q3"] = quant[2]
+            else:
+                # Fill the gaps.
+                dict2[field + "_max"] = "NaN"
+                dict2[field + "_min"] = "NaN"
+                dict2[field + "_mean"] = "NaN"
+                dict2[field + "_q1"] = "NaN"
+                dict2[field + "_q2"] = "NaN"
+                dict2[field + "_q3"] = "NaN"
 
     # Add a label for each activity.
     main_label = "ERROR"
