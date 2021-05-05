@@ -106,9 +106,11 @@ def summarize(activity):
     act_folders = activity.split("/")[-1]
     if -1 < act_folders.find("Run") or -1 < act_folders.find("Trail") or -1 < act_folders.find("Asfalt") or -1 < act_folders.find("run"):
         main_label = "run"
-    elif -1 < act_folders.find("Cycling") or -1 < act_folders.find("Bici") or -1 < act_folders.find("Bycicle"):
+    elif -1 < act_folders.find("Cycling") or -1 < act_folders.find("Bici") or -1 < act_folders.find("Bycicle") or -1 < act_folders.find("BTT") or -1 < act_folders.find("bici"):
         main_label = "bike"
-    elif -1 < act_folders.find("Walking"):
+    elif -1 < act_folders.find("Walk"):
+        main_label = "walk"
+    elif -1 < act_folders.find("Car") or -1 < act_folders.find("Bus") or -1 < act_folders.find("Cotxe") or -1 < act_folders.find("Metro") or -1 < act_folders.find("Tramvia"):
         main_label = "walk"
     else:
         print("No label detected for: " + act_folders)

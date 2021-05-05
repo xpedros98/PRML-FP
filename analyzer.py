@@ -9,9 +9,11 @@ import time
 t0 = time.time()
 
 ds = pd.read_csv("dataset.csv", sep=",", header=0)
-fig = plt.figure(figsize=(14, 14))
-sns.pairplot(ds, hue="label")  # “hue” attribute is the one with which the data is colored.
-plt.show()
+
+ds_nonnan = ds.dropna()
+# fig = plt.figure(figsize=(14, 14))
+# sns.pairplot(ds, hue="label")  # “hue” attribute is the one with which the data is colored.
+# plt.show()
 
 # Do feedback of the elapsed time running the program.
 elapsed = time.time() - t0
