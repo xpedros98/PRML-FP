@@ -111,7 +111,9 @@ def summarize(activity):
     elif -1 < act_folders.find("Walk"):
         main_label = "walk"
     elif -1 < act_folders.find("Car") or -1 < act_folders.find("Bus") or -1 < act_folders.find("Cotxe") or -1 < act_folders.find("Metro") or -1 < act_folders.find("Tramvia"):
-        main_label = "walk"
+        main_label = "vehicle"
+    elif -1 < act_folders.find("Test"):
+        main_label = "test"
     else:
         print("No label detected for: " + act_folders)
         print("Indicate the main label manually: ", end="")

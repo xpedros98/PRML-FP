@@ -11,6 +11,12 @@ t0 = time.time()
 ds = pd.read_csv("dataset.csv", sep=",", header=0)
 
 ds_nonnan = ds.dropna()
+
+mask = ds_nonnan.label != "test"  # Get a boolean vector for each data row.
+
+ds_clean = ds_nonnan.loc[mask]
+
+
 # fig = plt.figure(figsize=(14, 14))
 # sns.pairplot(ds, hue="label")  # “hue” attribute is the one with which the data is colored.
 # plt.show()
