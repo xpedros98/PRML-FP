@@ -29,41 +29,32 @@ import time
 
 t0 = time.time()
 
-ds = pd.read_csv("dataset.csv", sep=",", header=0)
+complete_ds = pd.read_csv("dataset.csv", sep=",", header=0)
 
+# Eliminate the test samples.
+mask = complete_ds.label != "test"  # Get a boolean vector for each data row.
+ds = complete_ds.loc[mask]
+
+# Discard sample with NaNs.
 ds_nonnan = ds.dropna()
 
-mask = ds_nonnan.label != "test"  # Get a boolean vector for each data row.
-
-ds_clean = ds_nonnan.loc[mask]
-
-# Back-up to plot properly.
-ds_clean_all = ds_clean
-
 # Save the target.
-y = ds_clean["label"]
+target = ds["label"]
+labels = list(set(target))
 
-undesired_headers = ["label", "fields_num", "props_num", "#ref"]
+# Remove last headers (because they are not data, are checksums to debug).
+undesired_headers = ["label", "fields_num", "props_num", "#ref", "Time_max", "Time_min", "Time_mean", "Time_q1", "Time_q2", "Time_q3", "LatitudeDegrees_max", "LatitudeDegrees_min", "LatitudeDegrees_mean", "LatitudeDegrees_q1", "LatitudeDegrees_q2", "LatitudeDegrees_q3", "LongitudeDegrees_max", "LongitudeDegrees_min", "LongitudeDegrees_mean", "LongitudeDegrees_q1", "LongitudeDegrees_q2", "LongitudeDegrees_q3"]
 for header in undesired_headers:
-    del ds_clean[header]
+    del ds[header]
 
-X = ds_clean
-X_shape = X.shape
-XS = StandardScaler().fit_transform(X)
-pca = decomposition.PCA(n_components=X_shape[1]).fit(XS)
-Xproj = pca.transform(XS)
+# Check the NaN gaps.
+for label in labels:
+    for header in ds.keys():
+        mask = ds.petal_length > 1.45  # Get a boolean vector for each data row.
+        column_name = 'petal_length'
+        ds.loc[mask, column_name] = np.nan  # Substitute the true values in mask by NaN in the specified column.
 
-dfpca = pd.DataFrame(Xproj[:, 0:7], columns=['PCA1', 'PCA2','PCA3', 'PCA4','PCA5', 'PCA6','PCA7'])
 
-fig = plt.figure(figsize=(8, 8))
-
-sns.pairplot(data=dfpca, hue=y)
-plt.show()
-print("Debugging")
-# fig = plt.figure(figsize=(14, 14))
-# sns.pairplot(ds, hue="label")  # “hue” attribute is the one with which the data is colored.
-# plt.show()
-
-# Do feedback of the elapsed time running the program.
+# Do feedback of the time elapsed running the program.
 elapsed = time.time() - t0
-print("Elapsed time: " + str(elapsed) + " s")
+print("Elapsed time: " + str(round(elapsed, 2)) + " s")
