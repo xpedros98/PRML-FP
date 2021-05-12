@@ -43,16 +43,21 @@ target = ds["label"]
 labels = list(set(target))
 
 # Remove last headers (because they are not data, are checksums to debug).
-undesired_headers = ["label", "fields_num", "props_num", "#ref", "Time_max", "Time_min", "Time_mean", "Time_q1", "Time_q2", "Time_q3", "LatitudeDegrees_max", "LatitudeDegrees_min", "LatitudeDegrees_mean", "LatitudeDegrees_q1", "LatitudeDegrees_q2", "LatitudeDegrees_q3", "LongitudeDegrees_max", "LongitudeDegrees_min", "LongitudeDegrees_mean", "LongitudeDegrees_q1", "LongitudeDegrees_q2", "LongitudeDegrees_q3"]
+undesired_headers = ["fields_num", "props_num", "#ref", "Time_max", "Time_min", "Time_mean", "Time_q1", "Time_q2", "Time_q3", "LatitudeDegrees_max", "LatitudeDegrees_min", "LatitudeDegrees_mean", "LatitudeDegrees_q1", "LatitudeDegrees_q2", "LatitudeDegrees_q3", "LongitudeDegrees_max", "LongitudeDegrees_min", "LongitudeDegrees_mean", "LongitudeDegrees_q1", "LongitudeDegrees_q2", "LongitudeDegrees_q3"]
 for header in undesired_headers:
     del ds[header]
 
 # Check the NaN gaps.
 for label in labels:
+    mask = ds.label == label
+    curr_ds = ds.loc[mask]
+    ds_shape = curr_ds.shape
     for header in ds.keys():
-        mask = ds.petal_length > 1.45  # Get a boolean vector for each data row.
-        column_name = 'petal_length'
-        ds.loc[mask, column_name] = np.nan  # Substitute the true values in mask by NaN in the specified column.
+        for i in range(ds_shape[0]):
+            print(i)
+        # mask = ds.petal_length > 1.45  # Get a boolean vector for each data row.
+        # column_name = 'petal_length'
+        # ds.loc[mask, column_name] = np.nan  # Substitute the true values in mask by NaN in the specified column.
 
 
 # Do feedback of the time elapsed running the program.
