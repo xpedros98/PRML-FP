@@ -26,6 +26,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.model_selection import cross_val_score
 import time
+import statistics as st
 
 t0 = time.time()
 
@@ -47,17 +48,32 @@ undesired_headers = ["fields_num", "props_num", "#ref", "Time_max", "Time_min", 
 for header in undesired_headers:
     del ds[header]
 
+
 # Check the NaN gaps.
 for label in labels:
     mask = ds.label == label
     curr_ds = ds.loc[mask]
     ds_shape = curr_ds.shape
     for header in ds.keys():
-        for i in range(ds_shape[0]):
-            print(i)
-        # mask = ds.petal_length > 1.45  # Get a boolean vector for each data row.
-        # column_name = 'petal_length'
-        # ds.loc[mask, column_name] = np.nan  # Substitute the true values in mask by NaN in the specified column.
+
+            print("-----------")
+            print(header)
+        if header != "label":
+            curr_nonnans = []
+            bool_list = np.zeros(ds_shape[0])  # Save a reference to know which values are not a number.
+            for i in range(ds_shape[0]):
+                bool_list[i] = 0
+                if not np.isnan(ds[header][i]):
+                    curr_nonnans.append(ds[header][i])
+                else:
+                    bool_list[i] = 1
+            if len(curr_nonnans) != 0:
+                curr_mean = st.mean(curr_nonnans)
+                mask = bool_list
+                column = header
+                ds.loc[mask, column] = curr_mean  # Substitute the true values of mask in the specified column.
+            else:
+                print("wrong!")
 
 
 # Do feedback of the time elapsed running the program.
