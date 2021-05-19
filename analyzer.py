@@ -31,6 +31,7 @@ import statistics as st
 t0 = time.time()
 
 complete_ds = pd.read_csv("dataset.csv", sep=",", header=0)
+ds_shape = complete_ds.shape
 
 # Eliminate the test samples.
 mask = complete_ds.label != "test"  # Get a boolean vector for each data row.
@@ -53,27 +54,28 @@ for header in undesired_headers:
 for label in labels:
     mask = ds.label == label
     curr_ds = ds.loc[mask]
-    ds_shape = curr_ds.shape
-    for header in ds.keys():
+    print(label)
 
-            print("-----------")
-            print(header)
+    for header in ds.keys():
+        curr_list = list(curr_ds[header])
         if header != "label":
             curr_nonnans = []
-            bool_list = np.zeros(ds_shape[0])  # Save a reference to know which values are not a number.
-            for i in range(ds_shape[0]):
-                bool_list[i] = 0
-                if not np.isnan(ds[header][i]):
-                    curr_nonnans.append(ds[header][i])
+            index_list = []  # Save a reference to know which values are not a number.
+            for i in range(len(curr_list)):
+                if not np.isnan(curr_list[i]):
+                    curr_nonnans.append(curr_list[i])
                 else:
-                    bool_list[i] = 1
-            if len(curr_nonnans) != 0:
+                    index_list.append(curr_ds.index[i])
+
+            if len(curr_nonnans) != 0 and len(index_list) != 0:
                 curr_mean = st.mean(curr_nonnans)
-                mask = bool_list
-                column = header
-                ds.loc[mask, column] = curr_mean  # Substitute the true values of mask in the specified column.
-            else:
-                print("wrong!")
+                for i in index_list:
+                    ds[header][i] = curr_mean
+                # mask = bool_list
+                # column = header
+                # complete_ds.loc[mask, column] = curr_mean  # Substitute the true values of mask in the specified column.
+            elif len(curr_nonnans) == 0:
+                print("All nans for: " + label + " -> " + header)
 
 
 # Do feedback of the time elapsed running the program.

@@ -1,0 +1,13 @@
+column1,column2,column3,label
+3,NaN,2,run
+4,NaN,NaN,run
+3,NaN,6,bike
+4,NaN,NaN,bike
+3,NaN,2,run
+4,NaN,NaN,bike
+3,NaN,4,run
+4,NaN,NaN,run
+3,NaN,6,bike
+4,NaN,NaN,run
+3,NaN,2,bike
+4,NaN,4,run
