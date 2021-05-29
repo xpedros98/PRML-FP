@@ -1,4 +1,4 @@
-from inspector import loadData, summarize
+from auxiliar_functions import loadData, summarize
 import os
 
 # Convert all .tcx files of the "Data" folder of the project to .csv files in the "Outs" folder of the project.
