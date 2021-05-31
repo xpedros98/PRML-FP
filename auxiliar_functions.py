@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-from conversor import tcx2csv, latlon2dist
 import re
 import xml.etree.ElementTree as et
 import math
