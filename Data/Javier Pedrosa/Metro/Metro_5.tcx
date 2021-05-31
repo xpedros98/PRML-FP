@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TrainingCenterDatabase xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd" xmlns:ns5="http://www.garmin.com/xmlschemas/ActivityGoals/v1" xmlns:ns3="http://www.garmin.com/xmlschemas/ActivityExtension/v2" xmlns:ns2="http://www.garmin.com/xmlschemas/UserProfile/v2" xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <Activities>
+  <Activity Sport="Other">
+   <Id>2021-04-07T18:32:23Z</Id>
+   <Lap StartTime="2021-04-07T18:32:23Z">
+    <TotalTimeSeconds>431</TotalTimeSeconds>
+    <DistanceMeters>3105.39</DistanceMeters>
+    <MaximumSpeed>52560.0</MaximumSpeed>
+    <Calories>0</Calories>
+    <Intensity>Active</Intensity>
+    <TriggerMethod>Manual</TriggerMethod>
+    <Track>
+     <Trackpoint>
+      <Time>2021-04-07T18:32:23Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3755890</LatitudeDegrees>
+       <LongitudeDegrees>2.1487490</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>37.3</AltitudeMeters>
+      <DistanceMeters>0.0</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>0.0</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:32:56Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3752410</LatitudeDegrees>
+       <LongitudeDegrees>2.1499870</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>36.4</AltitudeMeters>
+      <DistanceMeters>121.1</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>3.7</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:33:03Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3750000</LatitudeDegrees>
+       <LongitudeDegrees>2.1512520</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>35.9</AltitudeMeters>
+      <DistanceMeters>230.0</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>5.8</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:35:48Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3749310</LatitudeDegrees>
+       <LongitudeDegrees>2.1690580</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>21.4</AltitudeMeters>
+      <DistanceMeters>1715.7</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>9.3</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:35:54Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3749390</LatitudeDegrees>
+       <LongitudeDegrees>2.1691010</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>21.4</AltitudeMeters>
+      <DistanceMeters>1719.5</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>8.7</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:38:09Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3813420</LatitudeDegrees>
+       <LongitudeDegrees>2.1731860</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>21.9</AltitudeMeters>
+      <DistanceMeters>2508.8</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>5.6</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:38:27Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3813340</LatitudeDegrees>
+       <LongitudeDegrees>2.1731870</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>21.9</AltitudeMeters>
+      <DistanceMeters>2508.8</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>5.2</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:38:52Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3813480</LatitudeDegrees>
+       <LongitudeDegrees>2.1731840</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>21.9</AltitudeMeters>
+      <DistanceMeters>2508.8</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>0.0</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+     <Trackpoint>
+      <Time>2021-04-07T18:39:08Z</Time>
+      <Position>
+       <LatitudeDegrees>41.3861950</LatitudeDegrees>
+       <LongitudeDegrees>2.1701360</LongitudeDegrees>
+      </Position>
+      <AltitudeMeters>29.6</AltitudeMeters>
+      <DistanceMeters>3105.4</DistanceMeters>
+      <Extensions>
+       <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+        <Speed>14.6</Speed>
+       </TPX>
+      </Extensions>
+     </Trackpoint>
+    </Track>
+   </Lap>
+  </Activity>
+ </Activities>
+</TrainingCenterDatabase>
