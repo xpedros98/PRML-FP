@@ -1,5 +1,4 @@
 # PRML final project
- - f
 This repository contains the complementary programs commented on the final project report as well as the data needed to run them. The files correspond to:
  - auxiliar_fucntions.py: there are auxiliar functions to convert and compute the data.
  - ds_creator.py: it is the main program, the only that it is needed to run in order to obtain the dataset.
