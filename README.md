@@ -3,6 +3,8 @@ This repository contains the complementary programs commented on the final proje
  - auxiliar_fucntions.py: there are auxiliar functions to convert and compute the data.
  - ds_creator.py: it is the main program, the only that it is needed to run in order to obtain the dataset.
 
+It also includes the "datsaet.csv" file; this is the one with which we obtained the results of the report. This can also be generated again by these programs mentioned above. However, we realized that we only achived to run it properly on Ubuntu OS. On Windows returns an error, and the reason seems to be that it reads the paths in a different way, not easy to manage with; and it is required when accessing to the Data folder with the original data files.
+
 ## Requirements
  - All .py files from the repo must be saved in the same folder.
 
